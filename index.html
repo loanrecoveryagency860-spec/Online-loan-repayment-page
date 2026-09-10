@@ -1,0 +1,617 @@
+# Online-loan-repayment-page<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Payment</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:#061735;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:15px;
+}
+
+.phone{
+    width:100%;
+    max-width:480px;
+    min-height:900px;
+    border:5px solid #315da8;
+    border-radius:55px;
+    padding:25px 22px;
+    background:
+      radial-gradient(circle at 50% 0%,#143b83 0,#071b43 40%,#03132f 100%);
+    box-shadow:
+      0 0 30px #1756d6,
+      inset 0 0 20px #07102b;
+    overflow:hidden;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#7258ff;
+}
+
+.tagline{
+    color:#a9c6ee;
+    margin-top:5px;
+}
+
+.amount-box{
+    background:linear-gradient(135deg,#237aff,#0053df);
+    border-radius:22px;
+    padding:20px;
+    box-shadow:0 8px 25px rgba(0,60,255,.35);
+}
+
+.amount-label{
+    font-size:21px;
+    font-weight:bold;
+}
+
+.amount{
+    font-size:56px;
+    font-weight:900;
+    margin:5px 0;
+}
+
+.note{
+    font-size:14px;
+    color:#e1ecff;
+}
+
+.upi-box{
+    margin-top:15px;
+    background:#071d43;
+    border:2px solid #173d78;
+    border-radius:20px;
+    padding:14px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.upi-icon{
+    width:50px;
+    height:50px;
+    border-radius:14px;
+    background:#03132e;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+}
+
+.upi-details{
+    flex:1;
+}
+
+.small{
+    color:#a6c0e8;
+    font-size:14px;
+}
+
+.upi-id{
+    font-weight:bold;
+    font-size:16px;
+    margin-top:4px;
+    word-break:break-all;
+}
+
+.copy{
+    border:0;
+    background:#087bff;
+    color:white;
+    padding:11px 15px;
+    border-radius:13px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+h2{
+    margin-top:23px;
+    font-size:22px;
+}
+
+.subtitle{
+    color:#9db9e4;
+    margin-top:5px;
+    margin-bottom:14px;
+}
+
+.methods{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.method{
+    min-height:67px;
+    border:2px solid #31558e;
+    border-radius:18px;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    background:#122c5b;
+}
+
+.phonepe{
+    background:linear-gradient(135deg,#7433ff,#3c17d7);
+}
+
+.gpay{
+    background:#f4f6fa;
+    color:#34405a;
+}
+
+.paytm{
+    background:#087ef5;
+}
+
+.other{
+    background:#1b396b;
+}
+
+.timer{
+    margin-top:17px;
+    border:2px solid #ff3970;
+    background:#311a4b;
+    border-radius:20px;
+    padding:15px;
+}
+
+.timer-title{
+    color:#b8cae8;
+}
+
+#timer{
+    color:#ff3970;
+    font-size:29px;
+    font-weight:900;
+    margin-top:3px;
+}
+
+.utr-box{
+    margin-top:15px;
+    border:2px solid #0759c7;
+    background:#071e47;
+    border-radius:20px;
+    padding:17px;
+}
+
+.utr-title{
+    font-size:17px;
+    font-weight:bold;
+}
+
+.utr-help{
+    color:#9cb9e3;
+    font-size:13px;
+    margin:5px 0 12px;
+}
+
+input{
+    width:100%;
+    height:48px;
+    border-radius:25px;
+    border:2px solid #2867c4;
+    background:#061b42;
+    color:white;
+    padding:0 17px;
+    outline:none;
+    font-size:15px;
+}
+
+.submit{
+    width:100%;
+    height:50px;
+    border:0;
+    border-radius:28px;
+    margin-top:11px;
+    background:linear-gradient(90deg,#00d477,#08b96b);
+    color:white;
+    font-size:19px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.footer{
+    text-align:center;
+    color:#9bb7df;
+    font-size:13px;
+    margin-top:20px;
+}
+
+.success{
+    display:none;
+    text-align:center;
+    padding:55px 10px;
+}
+
+.success-icon{
+    width:85px;
+    height:85px;
+    margin:auto;
+    border-radius:50%;
+    background:#05c979;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:50px;
+    box-shadow:0 0 35px #00c875;
+}
+
+.success h1{
+    margin-top:20px;
+    font-size:30px;
+}
+
+.success p{
+    color:#a8c3e9;
+    margin-top:8px;
+}
+
+@media(max-width:400px){
+    .phone{
+        border-radius:35px;
+        padding:20px 15px;
+    }
+
+    .amount{
+        font-size:46px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+    <!-- PAYMENT SCREEN -->
+    <div id="paymentScreen">
+
+        <div class="header">
+            <div class="logo">
+                Online <span>Payment</span>
+            </div>
+            <div class="tagline">
+                Fast • Secure • Easy
+            </div>
+        </div>
+
+        <div class="amount-box">
+            <div class="amount-label">Total Amount</div>
+
+            <div class="amount">
+                ₹ <span id="amount">0</span>
+            </div>
+
+            <div class="note">
+                Please pay the exact amount to proceed
+            </div>
+        </div>
+
+        <div class="upi-box">
+
+            <div class="upi-icon">₹</div>
+
+            <div class="upi-details">
+                <div class="small">UPI ID</div>
+                <div class="upi-id" id="upiId">
+                    your-upi-id@bank
+                </div>
+            </div>
+
+            <button class="copy" onclick="copyUPI()">
+                Copy
+            </button>
+
+        </div>
+
+        <h2>Select Payment Method</h2>
+
+        <div class="subtitle">
+            Choose your preferred UPI app
+        </div>
+
+        <div class="methods">
+
+            <button class="method phonepe"
+                    onclick="payWithUPI()">
+                🟣 PhonePe
+            </button>
+
+            <button class="method gpay"
+                    onclick="payWithUPI()">
+                🟢 Google Pay
+            </button>
+
+            <button class="method paytm"
+                    onclick="payWithUPI()">
+                Paytm
+            </button>
+
+            <button class="method other"
+                    onclick="payWithUPI()">
+                ▦ Other UPI Apps →
+            </button>
+
+        </div>
+
+        <div class="timer">
+            <div class="timer-title">
+                Payment request expires in
+            </div>
+            <div id="timer">
+                09:59
+            </div>
+        </div>
+
+        <div class="utr-box">
+
+            <div class="utr-title">
+                📄 Submit UTR
+            </div>
+
+            <div class="utr-help">
+                After successful payment, enter your
+                UTR / Reference ID below.
+            </div>
+
+            <input
+                id="utr"
+                type="text"
+                placeholder="Enter UTR / Reference ID"
+                autocomplete="off"
+            >
+
+            <button class="submit" onclick="submitUTR()">
+                ➤ Submit UTR
+            </button>
+
+        </div>
+
+        <div class="footer">
+            🛡 Secure Payment • UPI Payment
+            <br><br>
+            Please verify payment before submitting UTR.
+        </div>
+
+    </div>
+
+
+    <!-- SUCCESS SCREEN -->
+    <div id="successScreen" class="success">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h1>Order Successfully</h1>
+
+        <p>
+            Your payment has been verified successfully.
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* --------------------------------
+   URL FORMAT
+
+   #4500/your-upi-id@bank
+
+   Example:
+
+   https://example.com/#4500/shop@upi
+-------------------------------- */
+
+function loadPaymentData(){
+
+    let hash = window.location.hash.substring(1);
+
+    if(!hash){
+        return;
+    }
+
+    let parts = hash.split("/");
+
+    let amount = parts[0];
+    let upi = parts.slice(1).join("/");
+
+    if(amount && !isNaN(amount)){
+        document.getElementById("amount").textContent =
+            Number(amount).toLocaleString("en-IN");
+    }
+
+    if(upi){
+        document.getElementById("upiId").textContent =
+            decodeURIComponent(upi);
+    }
+}
+
+loadPaymentData();
+
+
+/* --------------------------------
+   COPY UPI
+-------------------------------- */
+
+function copyUPI(){
+
+    let upi =
+        document.getElementById("upiId").textContent;
+
+    navigator.clipboard.writeText(upi);
+
+    alert("UPI ID copied");
+}
+
+
+/* --------------------------------
+   UPI PAYMENT
+
+   This opens installed UPI app.
+-------------------------------- */
+
+function payWithUPI(){
+
+    let amount =
+        document.getElementById("amount").textContent
+        .replace(/,/g,'');
+
+    let upi =
+        document.getElementById("upiId").textContent;
+
+    let url =
+        "upi://pay" +
+        "?pa=" + encodeURIComponent(upi) +
+        "&pn=" + encodeURIComponent("Online Payment") +
+        "&am=" + encodeURIComponent(amount) +
+        "&cu=INR";
+
+    window.location.href = url;
+}
+
+
+/* --------------------------------
+   COUNTDOWN
+-------------------------------- */
+
+let seconds = 599;
+
+let countdown = setInterval(function(){
+
+    let min =
+        Math.floor(seconds / 60)
+        .toString()
+        .padStart(2,"0");
+
+    let sec =
+        (seconds % 60)
+        .toString()
+        .padStart(2,"0");
+
+    document.getElementById("timer").textContent =
+        min + ":" + sec;
+
+    if(seconds <= 0){
+
+        clearInterval(countdown);
+
+        document.getElementById("timer")
+            .textContent = "EXPIRED";
+    }
+
+    seconds--;
+
+},1000);
+
+
+/* --------------------------------
+   UTR SUBMISSION
+
+   IMPORTANT:
+   Real verification should happen
+   through your backend.
+-------------------------------- */
+
+async function submitUTR(){
+
+    let utr =
+        document.getElementById("utr").value.trim();
+
+    if(!utr){
+
+        alert("Please enter UTR / Reference ID");
+        return;
+    }
+
+    let amount =
+        document.getElementById("amount").textContent
+        .replace(/,/g,'');
+
+    let upi =
+        document.getElementById("upiId").textContent;
+
+
+    /*
+       Connect this to your own backend.
+
+       Example:
+
+       const response = await fetch(
+           "https://YOUR-BACKEND/verify",
+           {
+              method:"POST",
+              headers:{
+                 "Content-Type":"application/json"
+              },
+              body:JSON.stringify({
+                 utr:utr,
+                 amount:amount,
+                 upi:upi
+              })
+           }
+       );
+
+       const result = await response.json();
+
+       if(result.verified){
+           showSuccess();
+       }
+    */
+
+
+    alert(
+        "UTR submitted. Payment verification is required."
+    );
+}
+
+
+/* --------------------------------
+   SUCCESS SCREEN
+
+   Call this ONLY after your backend
+   confirms that the payment is real.
+-------------------------------- */
+
+function showSuccess(){
+
+    document.getElementById("paymentScreen")
+        .style.display = "none";
+
+    document.getElementById("successScreen")
+        .style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
